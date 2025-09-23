@@ -7,6 +7,17 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    val arrStr: List<String> = listOf(
+        "Aries", "Tauro", "Géminis", "Cáncer",
+        "Leo", "Virgo", "Libra", "Escorpio",
+        "Sagitario", "Capricornio", "Acuario", "Piscis")
+
+    val horoscopeList: List<Horoscope> = listOf(
+        Horoscope("Aries", name = 0, dates = 0, icon = 0),
+        Horoscope("Piscis", 9, dates = 4, icon = 2)
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -15,6 +26,10 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        for (v in arrStr) {
+            println(v)
         }
     }
 }
