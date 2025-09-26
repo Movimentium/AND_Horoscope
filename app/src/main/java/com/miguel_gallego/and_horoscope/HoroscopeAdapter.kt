@@ -4,7 +4,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class HoroscopeAdapter(val items: List<Horoscope>): RecyclerView.Adapter<HoroscopeViewHolder>() {
+class HoroscopeAdapter(
+    val items: List<Horoscope>,
+    val onClickListener: (Int) -> Unit
+): RecyclerView.Adapter<HoroscopeViewHolder>() {
 
     // Cuál es la vista para los elementos
     override fun onCreateViewHolder(
@@ -19,6 +22,9 @@ class HoroscopeAdapter(val items: List<Horoscope>): RecyclerView.Adapter<Horosco
         holder: HoroscopeViewHolder,
         position: Int
     ) {
+        holder.itemView.setOnClickListener {
+            onClickListener(position)
+        }
         TODO("Not yet implemented")
     }
 

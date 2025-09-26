@@ -1,5 +1,6 @@
 package com.miguel_gallego.and_horoscope
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -32,4 +33,11 @@ class MainActivity : AppCompatActivity() {
             println(v)
         }
     }
+
+    fun goToDetail(horoscope: Horoscope) {
+        val intent = Intent(this, DetailActivity::class.java) // to request things to the OS
+        intent.putExtra("HOROSCOPE_ID", horoscope.id)
+        startActivity(intent) // open DetailActivity
+    }
+
 }
