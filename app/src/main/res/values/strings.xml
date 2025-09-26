@@ -27,4 +27,6 @@
     <string name="date_aquarius">January 20 to February 18</string>
     <string name="date_pisces">February 19 to March 20</string>
 
+    <string name="menu_search">Search</string>
+
 </resources>
