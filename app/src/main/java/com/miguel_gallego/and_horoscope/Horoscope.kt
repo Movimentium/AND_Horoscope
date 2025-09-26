@@ -15,4 +15,6 @@ class Horoscope(    // Guardamos el identificador de cada dato
 
          */
     }
+
+
 }

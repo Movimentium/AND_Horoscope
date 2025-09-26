@@ -11,8 +11,7 @@
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/recyclerVw"
        android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
-
-
+       android:layout_height="match_parent"
+       tools:text="@layout/item_horoscope"/>
 
 </LinearLayout>
