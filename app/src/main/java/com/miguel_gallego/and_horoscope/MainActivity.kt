@@ -6,18 +6,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
-    val arrStr: List<String> = listOf(
-        "Aries", "Tauro", "Géminis", "Cáncer",
-        "Leo", "Virgo", "Libra", "Escorpio",
-        "Sagitario", "Capricornio", "Acuario", "Piscis")
+    lateinit var vwRecycler: RecyclerView
+    val zodiacSingList: List<ZodiacSing> = ZodiacSing.getAll()
 
-    val horoscopeList: List<Horoscope> = listOf(
-        Horoscope("Aries", name = 0, dates = 0, icon = 0),
-        Horoscope("Piscis", 9, dates = 4, icon = 2)
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,15 +25,19 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        for (v in arrStr) {
-            println(v)
-        }
+        val adapter = ZodiacAdapter(zodiacSingList)
+        vwRecycler = findViewById(R.id.recyclerVw)
+        vwRecycler.adapter = adapter
+        vwRecycler.layoutManager = LinearLayoutManager(this)
+
     }
 
+    /*
     fun goToDetail(horoscope: Horoscope) {
         val intent = Intent(this, DetailActivity::class.java) // to request things to the OS
         intent.putExtra("HOROSCOPE_ID", horoscope.id)
         startActivity(intent) // open DetailActivity
     }
+    */
 
 }

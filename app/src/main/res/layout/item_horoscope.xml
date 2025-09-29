@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/imgVwIcon"
+        android:id="@+id/imgVwSign"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/outline_adb_24"/>
+        android:src="@drawable/outline_adb_24"
+        android:contentDescription="Zodiac Sign"/>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -19,20 +21,20 @@
         android:layout_marginStart="8dp">
 
         <TextView
-            android:id="@+id/tvZodiacSign"
+            android:id="@+id/tvSignName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:text="ZodiacName"/>
+            tools:text="SingName"/>
 
         <TextView
-            android:id="@+id/tvZodiacDates"
+            android:id="@+id/tvSignDates"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="ZodiacDates"/>
+            android:layout_marginTop="2dp"
+            tools:text="ZodiacDates"/>
 
     </LinearLayout>
 
