@@ -1,11 +1,11 @@
 package com.miguel_gallego.and_horoscope.adapters
 
 import android.view.LayoutInflater
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.miguel_gallego.and_horoscope.R
 import com.miguel_gallego.and_horoscope.data.ZodiacSing
 

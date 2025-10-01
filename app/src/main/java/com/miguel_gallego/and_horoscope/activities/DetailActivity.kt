@@ -1,4 +1,4 @@
-package com.miguel_gallego.and_horoscope
+package com.miguel_gallego.and_horoscope.activities
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -8,8 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.miguel_gallego.and_horoscope.R
 import com.miguel_gallego.and_horoscope.data.ZodiacSing
-import org.w3c.dom.Text
 
 class DetailActivity : AppCompatActivity() {
 
