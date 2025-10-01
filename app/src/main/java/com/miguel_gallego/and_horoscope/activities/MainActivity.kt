@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miguel_gallego.and_horoscope.R
@@ -14,7 +15,7 @@ import com.miguel_gallego.and_horoscope.adapters.ZodiacAdapter
 import com.miguel_gallego.and_horoscope.data.ZodiacSing
 
 class MainActivity : AppCompatActivity() {
-
+    val kZodiacSingId = "ZODIAZ_SING_ID" //REVIEW
     lateinit var vwRecycler: RecyclerView
     lateinit var adapter: ZodiacAdapter
     lateinit var viewModeMenu: MenuItem
@@ -32,17 +33,30 @@ class MainActivity : AppCompatActivity() {
         }
         supportActionBar?.setTitle(R.string.activity_main_title)
         vwRecycler = findViewById(R.id.recyclerVw)
-        setupViewMode()
-
-
-    //        vwRecycler.layoutManager = LinearLayoutManager(this)
+        setupGridOrLinearLayout()
     }
 
-    fun setupViewMode() {
-        if (isGridViewEnabled) {
-            // TODO
+    override fun onResume() {
+        super.onResume()
+        adapter.updateWith(zodiacSingList) //WTF is this
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // TODO
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupMenuMode() {
+        // TODO
+    }
+
+    private fun setupGridOrLinearLayout() {
+        if (isGridViewEnabled) {    //REVIEW    WTF is ::??
+            adapter = ZodiacAdapter(zodiacSingList, ::onItemClickListener, R.layout.item_horoscope)
+            vwRecycler.layoutManager = GridLayoutManager(this, 2)
         } else {
             adapter = ZodiacAdapter(zodiacSingList, ::onItemClickListener, R.layout.item_horoscope)
+            vwRecycler.layoutManager = LinearLayoutManager(this)
         }
         vwRecycler.adapter = adapter
     }
@@ -57,6 +71,4 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(kZodiacSingId, zodiacSing.id)  // WTF is this??
         startActivity(intent)  // open DetailActivity
     }
-
-
 }
