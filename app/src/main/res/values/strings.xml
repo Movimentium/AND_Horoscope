@@ -28,5 +28,6 @@
     <string name="date_pisces">February 19 to March 20</string>
 
     <string name="menu_search">Search</string>
+    <string name="activity_main_title">Main Activity</string>
 
 </resources>

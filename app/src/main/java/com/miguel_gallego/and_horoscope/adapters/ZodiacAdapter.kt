@@ -9,13 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.miguel_gallego.and_horoscope.R
 import com.miguel_gallego.and_horoscope.data.ZodiacSing
 
-class ZodiacAdapter(val items: List<ZodiacSing>): RecyclerView.Adapter<ZodiacSignViewHolder>() {
+class ZodiacAdapter(
+    var items: List<ZodiacSing>,
+    val onClickListener: (Int) -> Unit,   // (Int) -> Void
+    val layout: Int
+): RecyclerView.Adapter<ZodiacSignViewHolder>() {
 
     // Defines the view for each item of the list
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ZodiacSignViewHolder {
         val vwItem = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_horoscope,
-                                                                    parent, false)
+            R.layout.item_horoscope,parent, false)
         return ZodiacSignViewHolder(vwItem)
     }
 
@@ -23,10 +26,18 @@ class ZodiacAdapter(val items: List<ZodiacSing>): RecyclerView.Adapter<ZodiacSig
     override fun onBindViewHolder(holder: ZodiacSignViewHolder, position: Int) {
         val item = items[position]
         holder.render(item)
+        holder.itemView.setOnClickListener {  // When user tap in the cell
+            onClickListener(position)
+        }
     }
 
     override fun getItemCount(): Int {
         return items.size
+    }
+
+    fun updateWith(items: List<ZodiacSing>) {
+        this.items = items
+        notifyDataSetChanged() // WTF is this??
     }
 }
 
@@ -37,9 +48,13 @@ class ZodiacSignViewHolder(view: View): RecyclerView.ViewHolder(view) {
     val tvSingDates: TextView = view.findViewById(R.id.tvSignDates)
     val imgVwSign: ImageView = view.findViewById(R.id.imgVwSign)
 
+    //TODO: favorite imageview
+
     fun render(zodiacSing: ZodiacSing) {
         tvSignName.setText(zodiacSing.name)
         tvSingDates.setText(zodiacSing.dates)
         imgVwSign.setImageResource(zodiacSing.icon)
+
+        //TODO: isfavorite
     }
 }

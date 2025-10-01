@@ -1,5 +1,6 @@
 package com.miguel_gallego.and_horoscope.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
@@ -22,6 +23,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var menuFavorite: MenuItem
     var isFavorite = false
 
+    val kZodiacSingId = "ZODIAZ_SING_ID" //REVIEW
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +42,10 @@ class DetailActivity : AppCompatActivity() {
 
         // session = SessionManager(this)  // WTF Is This??
 
-        val id = intent.getStringExtra("HOROSCOPE_ID")!! // WTF Is This?
+        val id = intent.getStringExtra(kZodiacSingId)!! // WTF Is This?
 
         //isFavorite = session
     }
+
+
 }
