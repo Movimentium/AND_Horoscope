@@ -42,6 +42,6 @@ class DetailActivity : AppCompatActivity() {
 
         val id = intent.getStringExtra("HOROSCOPE_ID")!! // WTF Is This?
 
-        isFavorite = session
+        //isFavorite = session
     }
 }
