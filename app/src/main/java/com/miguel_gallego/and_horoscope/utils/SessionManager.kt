@@ -2,7 +2,7 @@ package com.miguel_gallego.and_horoscope.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.miguel_gallego.and_horoscope.ZodiacSing
+import com.miguel_gallego.and_horoscope.data.ZodiacSing
 
 class SessionManager(context: Context) {
 

@@ -1,4 +1,4 @@
-package com.miguel_gallego.and_horoscope
+package com.miguel_gallego.and_horoscope.adapters
 
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintSet
-
+import com.miguel_gallego.and_horoscope.R
+import com.miguel_gallego.and_horoscope.data.ZodiacSing
 
 class ZodiacAdapter(val items: List<ZodiacSing>): RecyclerView.Adapter<ZodiacSignViewHolder>() {
 
     // Defines the view for each item of the list
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ZodiacSignViewHolder {
-        val vwItem = LayoutInflater.from(parent.context).inflate(R.layout.item_horoscope,
+        val vwItem = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_horoscope,
                                                                     parent, false)
         return ZodiacSignViewHolder(vwItem)
     }
