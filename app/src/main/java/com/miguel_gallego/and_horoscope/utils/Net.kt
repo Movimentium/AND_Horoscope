@@ -31,6 +31,8 @@ class Net {
             var strUrl = "$api/$period?sign=$sing"
             day.let { strUrl += "&day=$it" }
             Log.i(k,"strUrl: $strUrl")
+            Log.i(Net.k,"Thread.name: ${Thread.currentThread().name} >> CoroutineScope(Dispatchers.IO).async")
+
 
             val url = URL(strUrl)
             val connection = url.openConnection() as HttpsURLConnection
