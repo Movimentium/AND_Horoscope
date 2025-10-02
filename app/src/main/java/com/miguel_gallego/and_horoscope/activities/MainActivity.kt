@@ -2,6 +2,7 @@ package com.miguel_gallego.and_horoscope.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +16,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.miguel_gallego.and_horoscope.R
 import com.miguel_gallego.and_horoscope.adapters.ZodiacAdapter
 import com.miguel_gallego.and_horoscope.data.ZodiacSing
+import com.miguel_gallego.and_horoscope.utils.Net
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     val kZodiacSingId = "ZODIAZ_SING_ID" //REVIEW
@@ -41,6 +46,12 @@ class MainActivity : AppCompatActivity() {
         val currentThread = Thread.currentThread()
         println("Nombre del hilo: ${currentThread.name}")
         println("ID del hilo: ${currentThread.id}")
+
+        // Test (Delete in the future)
+        CoroutineScope(Dispatchers.Main).launch {
+            val horoscopeText = Net().getHoroscopeTextAsync("Pisces", "TODAY").await()
+            Log.i(Net.k,horoscopeText)
+        }
     }
 
     override fun onResume() {
