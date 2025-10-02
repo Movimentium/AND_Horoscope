@@ -2,9 +2,11 @@ package com.miguel_gallego.and_horoscope.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var vwRecycler: RecyclerView
     lateinit var adapter: ZodiacAdapter
     lateinit var viewModeMenu: MenuItem
-    val zodiacSingList: List<ZodiacSing> = ZodiacSing.Companion.getAll()
+    var zodiacSingList: List<ZodiacSing> = ZodiacSing.Companion.getAll()
     var isGridViewEnabled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         supportActionBar?.setTitle(R.string.activity_main_title)
         vwRecycler = findViewById(R.id.recyclerVw)
         setupGridOrLinearLayout()
@@ -38,16 +41,53 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        adapter.updateWith(zodiacSingList) //WTF is this
+        adapter.updateWith(zodiacSingList) //WTF is this??
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // TODO
-        return super.onOptionsItemSelected(item)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.activity_main_menu, menu)
+        viewModeMenu = menu.findItem(R.id.action_view_mode)
+        setupMenuMode()
+
+        val vwSearch = menu.findItem(R.id.action_search).actionView as SearchView
+        vwSearch.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                zodiacSingList = ZodiacSing.getAll().filter {
+                    val strZodiacName = getString(it.name)
+                    val strZodiacDates = getString(it.dates)
+                    strZodiacName.contains(newText, ignoreCase = true) ||
+                            strZodiacDates.contains(newText, ignoreCase = true)
+                }
+                adapter.updateWith(zodiacSingList)
+                return true
+            }
+        })
+        return true
+        //return super.onCreateOptionsMenu(menu) // Why do not call super??
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean { //WTF is this??
+        return when (item.itemId) {
+            R.id.action_view_mode -> {
+                isGridViewEnabled = !isGridViewEnabled
+                setupGridOrLinearLayout()
+                setupMenuMode()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupMenuMode() {
-        // TODO
+        if (isGridViewEnabled) {
+            viewModeMenu.setIcon(R.drawable.ic_list_view)
+        } else {
+            viewModeMenu.setIcon(R.drawable.ic_grid_view)
+        }
     }
 
     private fun setupGridOrLinearLayout() {
