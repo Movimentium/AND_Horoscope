@@ -6,8 +6,7 @@
         android:id="@+id/item_menu_search"
         android:icon="@drawable/outline_search_24"
         android:title="@string/menu_search"
-        android:actionViewClass="androidx.appcompat.widget.SearchView"
-        tools:ignore="AppCompatResource"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|collapseActionView"/>
 
     <item

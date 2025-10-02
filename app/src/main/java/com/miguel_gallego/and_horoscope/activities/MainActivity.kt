@@ -46,16 +46,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.activity_main_menu, menu)
-        viewModeMenu = menu.findItem(R.id.action_view_mode)
+        viewModeMenu = menu.findItem(R.id.item_menu_view_mode)
         setupMenuMode()
 
-        val vwSearch = menu.findItem(R.id.action_search).actionView as SearchView
+        val vwSearch = menu.findItem(R.id.item_menu_search).actionView as SearchView
         vwSearch.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
+            override fun onQueryTextChange(newText: String): Boolean {
                 zodiacSingList = ZodiacSing.getAll().filter {
                     val strZodiacName = getString(it.name)
                     val strZodiacDates = getString(it.dates)
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean { //WTF is this??
         return when (item.itemId) {
-            R.id.action_view_mode -> {
+            R.id.item_menu_view_mode -> {
                 isGridViewEnabled = !isGridViewEnabled
                 setupGridOrLinearLayout()
                 setupMenuMode()
@@ -84,9 +84,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupMenuMode() {
         if (isGridViewEnabled) {
-            viewModeMenu.setIcon(R.drawable.ic_list_view)
+            viewModeMenu.setIcon(R.drawable.outline_view_list_24)
         } else {
-            viewModeMenu.setIcon(R.drawable.ic_grid_view)
+            viewModeMenu.setIcon(R.drawable.outline_grid_view_24)
         }
     }
 
