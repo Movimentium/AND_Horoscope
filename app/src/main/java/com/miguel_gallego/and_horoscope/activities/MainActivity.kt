@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.activity_main_title)
         vwRecycler = findViewById(R.id.recyclerVw)
         setupGridOrLinearLayout()
+
+        val currentThread = Thread.currentThread()
+        println("Nombre del hilo: ${currentThread.name}")
+        println("ID del hilo: ${currentThread.id}")
     }
 
     override fun onResume() {
@@ -92,7 +96,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupGridOrLinearLayout() {
         if (isGridViewEnabled) {    //REVIEW    WTF is ::??
-            adapter = ZodiacAdapter(zodiacSingList, ::onItemClickListener, R.layout.item_horoscope)
+            adapter = ZodiacAdapter(zodiacSingList, ::onItemClickListener, R.layout.item_horoscope_grid)
             vwRecycler.layoutManager = GridLayoutManager(this, 2)
         } else {
             adapter = ZodiacAdapter(zodiacSingList, ::onItemClickListener, R.layout.item_horoscope)
