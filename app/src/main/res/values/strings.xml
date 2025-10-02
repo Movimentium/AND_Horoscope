@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">AND_Horoscope</string>
 
+    <string name="activity_main_title">Zodiac</string>
+
     <string name="aries">Aries</string>
     <string name="taurus">Taurus</string>
     <string name="gemini">Gemini</string>
@@ -28,6 +30,8 @@
     <string name="date_pisces">February 19 to March 20</string>
 
     <string name="menu_search">Search</string>
-    <string name="activity_main_title">Main Activity</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_view_mode">View mode</string>
 
 </resources>
