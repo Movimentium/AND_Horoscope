@@ -10,8 +10,7 @@
         android:id="@+id/imgVwSign"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/outline_adb_24"
-        android:contentDescription="Zodiac Sign"/>
+        android:src="@drawable/outline_adb_24" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -37,5 +36,12 @@
             tools:text="ZodiacDates"/>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgVwFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/baseline_favorite_border_24"/>
 
 </LinearLayout>
