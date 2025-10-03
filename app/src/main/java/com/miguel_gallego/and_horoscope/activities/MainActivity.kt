@@ -43,13 +43,8 @@ class MainActivity : AppCompatActivity() {
         vwRecycler = findViewById(R.id.recyclerVw)
         setupGridOrLinearLayout()
 
-        val currentThread = Thread.currentThread()
-        println("Nombre del hilo: ${currentThread.name}")
-        println("ID del hilo: ${currentThread.id}")
-
         Log.i(Net.k,"Thread.name: ${Thread.currentThread().name} >> PRE CoroutineScope(Dispatchers.Main).launch")
-
-        // Test (Delete in the future)
+        // TODO Test (Delete in the future)
         CoroutineScope(Dispatchers.Main).launch {
             val horoscopeText = Net().getHoroscopeTextAsync("Pisces", "TODAY").await()
             Log.i(Net.k,"Thread.name: ${Thread.currentThread().name} >> CoroutineScope(Dispatchers.Main).launch")
@@ -75,8 +70,8 @@ class MainActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String): Boolean {
                 zodiacSingList = ZodiacSing.getAll().filter {
-                    val strZodiacName = getString(it.name)
-                    val strZodiacDates = getString(it.dates)
+                    val strZodiacName = getString(it.idName)
+                    val strZodiacDates = getString(it.idDates)
                     strZodiacName.contains(newText, ignoreCase = true) ||
                             strZodiacDates.contains(newText, ignoreCase = true)
                 }

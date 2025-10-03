@@ -51,9 +51,9 @@ class ZodiacSignViewHolder(view: View): RecyclerView.ViewHolder(view) {
     //TODO: favorite imageview
 
     fun render(zodiacSing: ZodiacSing) {
-        tvSignName.setText(zodiacSing.name)
-        tvSingDates.setText(zodiacSing.dates)
-        imgVwSign.setImageResource(zodiacSing.icon)
+        tvSignName.setText(zodiacSing.idName)
+        tvSingDates.setText(zodiacSing.idDates)
+        imgVwSign.setImageResource(zodiacSing.idIcon)
 
         //TODO: isfavorite
     }

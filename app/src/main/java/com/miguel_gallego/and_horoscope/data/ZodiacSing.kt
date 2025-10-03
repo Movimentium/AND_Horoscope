@@ -4,9 +4,9 @@ import com.miguel_gallego.and_horoscope.R
 
 class ZodiacSing (
     val id: String,  // id maybe "aries", "taurus", etc.
-    val name: Int,   // localized name from res/values/strings.xml
-    val dates: Int,
-    val icon: Int
+    val idName: Int,   // localized name from res/values/strings.xml
+    val idDates: Int,
+    val idIcon: Int
 ) {
     companion object {
         private val zodiacSignNames = listOf("aries", "taurus", "gemini", "cancer",

@@ -33,5 +33,6 @@
     <string name="menu_favorite">Favorite</string>
     <string name="menu_share">Share</string>
     <string name="menu_view_mode">View mode</string>
+    <string name="detail_descrip">Consulting the stars...</string>
 
 </resources>
