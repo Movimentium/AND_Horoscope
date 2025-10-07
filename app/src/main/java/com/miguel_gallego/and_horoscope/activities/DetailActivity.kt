@@ -70,6 +70,7 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setTitle(zodiacSing.idName)
         supportActionBar?.setSubtitle(zodiacSing.idDates)
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // Back button, tap -> onOptionsItemSelected
+        //supportActionBar?.setHomeAsUpIndicator(R.drawable.outline_adb_24) // Change Back button icon
 
         session = SessionManager(this)  // WTF Is This?? <<<---
         isFavorite = session.isFavorite(singId)

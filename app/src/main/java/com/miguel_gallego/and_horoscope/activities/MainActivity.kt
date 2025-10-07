@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        adapter.updateWith(zodiacSingList) //WTF is this??
+        adapter.updateWith(zodiacSingList)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -62,13 +62,16 @@ class MainActivity : AppCompatActivity() {
         viewModeMenu = menu.findItem(R.id.item_menu_view_mode)
         setupMenuMode()
 
+        // Search functionality
         val vwSearch = menu.findItem(R.id.item_menu_search).actionView as SearchView
-        vwSearch.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+        vwSearch.setOnQueryTextListener(object: SearchView.OnQueryTextListener {  // WTF is this??
             override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.i("SEARCH", "onQueryTextSubmit query: $query")
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
+                Log.i("SEARCH", "onQueryTextChange query: $newText")
                 zodiacSingList = ZodiacSing.getAll().filter {
                     val strZodiacName = getString(it.idName)
                     val strZodiacDates = getString(it.idDates)
@@ -84,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // When user tap on menu item
-    override fun onOptionsItemSelected(item: MenuItem): Boolean { //WTF is this??
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.item_menu_view_mode -> {
                 isGridViewEnabled = !isGridViewEnabled
