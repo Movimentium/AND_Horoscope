@@ -9,16 +9,6 @@ class ZodiacSing (
     val idIcon: Int
 ) {
     companion object {
-        private val zodiacSignNames = listOf("aries", "taurus", "gemini", "cancer",
-            "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "Pisces")
-
-        /*
-        private val zodiacSingList: List<ZodiacSing> = run {
-            val list = mutableListOf<ZodiacSing>()
-            zodiacSignNames.forEach { list.add(ZodiacSing(it, )) }
-            list
-        }
-        */
         private val zodiacSingList: List<ZodiacSing> = listOf(
             ZodiacSing("aries", R.string.aries, R.string.date_aries, R.drawable.img_aries),
             ZodiacSing("taurus", R.string.taurus, R.string.date_taurus, R.drawable.img_taurus),

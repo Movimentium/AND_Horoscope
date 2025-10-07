@@ -8,11 +8,4 @@
         android:title="@string/menu_favorite"
         app:showAsAction="always"/>
 
-    <item
-        android:id="@+id/item_menu_share"
-        android:icon="@drawable/outline_share_24"
-        android:title="@string/menu_share"
-        app:showAsAction="always"/>
-
-
 </menu>

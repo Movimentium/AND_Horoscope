@@ -43,12 +43,12 @@ class MainActivity : AppCompatActivity() {
         vwRecycler = findViewById(R.id.recyclerVw)
         setupGridOrLinearLayout()
 
-        Log.i(Net.k,"Thread.name: ${Thread.currentThread().name} >> PRE CoroutineScope(Dispatchers.Main).launch")
+        Log.i(Net.kAPI,"Thread.name: ${Thread.currentThread().name} >> PRE CoroutineScope(Dispatchers.Main).launch")
         // TODO Test (Delete in the future)
         CoroutineScope(Dispatchers.Main).launch {
             val horoscopeText = Net().getHoroscopeTextAsync("Pisces", "TODAY").await()
-            Log.i(Net.k,"Thread.name: ${Thread.currentThread().name} >> CoroutineScope(Dispatchers.Main).launch")
-            Log.i(Net.k,horoscopeText)
+            Log.i(Net.kAPI,"Thread.name: ${Thread.currentThread().name} >> CoroutineScope(Dispatchers.Main).launch")
+            Log.i(Net.kAPI,horoscopeText)
         }
     }
 
@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         //return super.onCreateOptionsMenu(menu) // Why do not call super??
     }
 
+    // When user tap on menu item
     override fun onOptionsItemSelected(item: MenuItem): Boolean { //WTF is this??
         return when (item.itemId) {
             R.id.item_menu_view_mode -> {
@@ -121,7 +122,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToDetail(zodiacSing: ZodiacSing) {
         val intent = Intent(this, DetailActivity::class.java)  // to request things to the OS // WTF is this??
-        intent.putExtra(kZodiacSingId, zodiacSing.id)  // WTF is this??
+        intent.putExtra(kZodiacSingId, zodiacSing.id)  // send id to DetailActivity
         startActivity(intent)  // open DetailActivity
     }
 }

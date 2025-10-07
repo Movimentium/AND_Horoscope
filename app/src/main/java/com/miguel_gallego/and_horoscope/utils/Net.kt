@@ -5,7 +5,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStream
@@ -16,10 +15,9 @@ import javax.net.ssl.HttpsURLConnection
 class Net {
     private val api = "https://horoscope-app-api.vercel.app/api/v1/get-horoscope"
     private val period = "daily"
-    private val k = "API"
 
     companion object {
-        val k = "API"
+        val kAPI = "API"
     }
     // sign accepted values: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio,
     // Sagittarius, Capricorn, Aquarius, Pisces
@@ -30,8 +28,8 @@ class Net {
         CoroutineScope(Dispatchers.IO).async {
             var strUrl = "$api/$period?sign=$sing"
             day.let { strUrl += "&day=$it" }
-            Log.i(k,"strUrl: $strUrl")
-            Log.i(Net.k,"Thread.name: ${Thread.currentThread().name} >> CoroutineScope(Dispatchers.IO).async")
+            Log.i(kAPI,"strUrl: $strUrl")
+            Log.i(Net.kAPI,"Thread.name: ${Thread.currentThread().name} >> CoroutineScope(Dispatchers.IO).async")
 
 
             val url = URL(strUrl)
@@ -45,10 +43,10 @@ class Net {
                     val text = json.getJSONObject("data").getString("horoscope_data")
                     return@async text
                 } else {
-                    Log.i(k,"Response code: ${connection.responseCode}"); ""
+                    Log.i(kAPI,"Response code: ${connection.responseCode}"); ""
                 }
             } catch (e: Exception) {
-                Log.e(k,"Error", e)
+                Log.e(kAPI,"Error", e)
                 e.printStackTrace();  ""
             } finally {
                 connection.disconnect();  ""

@@ -1,5 +1,6 @@
 package com.miguel_gallego.and_horoscope.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -43,7 +44,7 @@ class DetailActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        // Get zodiacSing selected, previously: intent.putExtra(kZodiacSingId, zodiacSing.id)
         val singId = intent.getStringExtra(kZodiacSingId)!!  // WTF Is This? <<<---
         zodiacSing = ZodiacSing.getById(singId)
 
@@ -65,6 +66,10 @@ class DetailActivity : AppCompatActivity() {
             vwProgress.hide()
         }
 
+        // Action Bar
+        supportActionBar?.setTitle(zodiacSing.idName)
+        supportActionBar?.setSubtitle(zodiacSing.idDates)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true) // Back button, tap -> onOptionsItemSelected
 
         session = SessionManager(this)  // WTF Is This?? <<<---
         isFavorite = session.isFavorite(singId)
@@ -79,9 +84,10 @@ class DetailActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.activity_detail_menu, menu)
         menuItemFavorite = menu.findItem(R.id.item_menu_favorite)
         updateMenuItemFavorite()
-        return true
+        return true // false not hide menu, I don't know why
     }
 
+    // When user tap on menu item
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_menu_favorite -> {
@@ -94,9 +100,12 @@ class DetailActivity : AppCompatActivity() {
                 }
                 return true
             }
-
-            R.id.item_menu_share -> {
-                Log.i("MENU", "Share menu item tapped")  //TODO
+            // R from android system, not from our project
+            android.R.id.home -> { // Back button
+                finish() // Close this activity
+                //// Bad Idea:
+                //val intent = Intent(this, MainActivity::class.java)
+                //startActivity(intent)
                 return true
             }
         }
