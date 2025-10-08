@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         setupGridOrLinearLayout()
 
         Log.i(Net.kAPI,"Thread.name: ${Thread.currentThread().name} >> PRE CoroutineScope(Dispatchers.Main).launch")
-        // TODO Test (Delete in the future)
+        // TODO This is a Test (Delete in the future)
         CoroutineScope(Dispatchers.Main).launch {
             val horoscopeText = Net().getHoroscopeTextAsync("Pisces", "TODAY").await()
             Log.i(Net.kAPI,"Thread.name: ${Thread.currentThread().name} >> CoroutineScope(Dispatchers.Main).launch")
